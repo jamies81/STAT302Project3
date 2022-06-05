@@ -1,0 +1,46 @@
+---
+title: "STAT302Package Tutorial"
+author: "Jamie Stringham"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{STAT302Package Tutorial}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(STAT302Package)
+```
+
+STAT302Package is an R package that makes it easy to perform a one sample t-test in R, and fit a linear model in R. Below is a tour of some of the things STAT302Package can do. STAT302Package was created by Jamie Stringham.
+
+##T-Test
+
+This function performs one sample t-tests. This is a statistical hypothesis test used to determine whether an unknown population \code{x} mean is different from a specific value \code{mu}.
+
+Along with the test statistic, this function also returns the degrees of freedom, the alternative (as entered in the function), and the p-value.
+
+For example, say you want to determine if the underlying population mean of the body mass of penguins in Antarctica is 4200 grams. We consider the null hypothesis that the population mean = 4200. We run the function as follows:
+
+```{r}
+my_t.test(my_penguins$body_mass_g, alternative = "two.sided", mu = 4200)
+```
+
+and get a test statistic of 0.04 and a p-value of 0.97. This is a very large p-value, so this indicates a strong evidence for the null hypothesis and so it cannot be rejected.
+
+##LM
+
+The my_lm function is used to fit linear models. For example, using the my_penguins dataset, if we want to use the the bill depth as the independent variable, and the bill length as the dependent variable, we would enter these into the my_lm function as follows:
+
+```{r}
+my_lm(my_penguins$bill_length_mm, my_penguins$bill_depth_mm)
+```
+
+Notice that this provides a table with rows for the intercept as well as the data frame, and columns with estimates, standard errors, t values, and p values. Since the p-value is very small, this indicates that the predictor is meaningful for the model.

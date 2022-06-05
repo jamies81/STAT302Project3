@@ -1,0 +1,21 @@
+Package: STAT302Package
+Title: Package for STAT302 Project 3
+Version: 0.0.0.9000
+Authors@R: 
+    person("Jamie", "Stringham")
+Description: Includes the functions my_t.test and my_lm.
+License: AGPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.0
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Suggests: 
+    rmarkdown,
+    knitr,
+    testthat (>= 3.0.0)
+VignetteBuilder: knitr
+Imports: 
+    magrittr
+Config/testthat/edition: 3
